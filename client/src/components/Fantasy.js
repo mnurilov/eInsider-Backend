@@ -7,11 +7,17 @@ class Home extends React.Component {
     this.onHomeClick = this.onHomeClick.bind(this);
     this.onProfileClick = this.onProfileClick.bind(this);
     this.onPointSystemClick = this.onPointSystemClick.bind(this);
+    this.onFavoritesClick = this.onFavoritesClick.bind(this);
   }
 
   onHomeClick = (event) => {
     console.log('Go home!');
     window.location.replace('/');
+  }
+
+  onFavoritesClick = (event) => {
+    console.log('my faves');
+    window.location.replace('/favorites');
   }
 
   onProfileClick = (event) => {
@@ -30,6 +36,7 @@ class Home extends React.Component {
               <h1 style={{textAlign: 'center', marginTop: '3%'}}>eInsider</h1>
               <div className="ui secondary  menu" style={{width: '50%', marginLeft: '26%'}}>
                   <a className="item" onClick={this.onHomeClick}>Home</a>
+                  <a className="item" onClick={this.onFavoritesClick}>Favorites</a>
                   <a className="item active">Fantasy</a>
                   <a className="item" onClick={this.onProfileClick}>Profile</a>
                   <div className="right menu">
@@ -37,42 +44,11 @@ class Home extends React.Component {
                   </div>
               </div>
 
-              <div class="ui grid" style={{width: '69%', marginLeft: '25%'}}>
-                  <div class="twelve wide stretched column" style={{width: '100%'}}>
-                      <div class="ui segment">
-                          <button className="ui button" onClick={this.onPointSystemClick}>How Does This Work?</button>
-                          <h1>Fantasy Home</h1>
-                          <div class="ui placeholder">
-                              <div class="paragraph">
-                                  <div class="line"></div>
-                                  <div class="line"></div>
-                                  <div class="line"></div>
-                                  <div class="line"></div>
-                                  <div class="line"></div>
-                              </div>
-                              <div class="paragraph">
-                                  <div class="line"></div>
-                                  <div class="line"></div>
-                                  <div class="line"></div>
-                              </div>
-                          </div>
-                          <h1>Join Leagues</h1>
-                          <div class="ui placeholder">
-                              <div class="paragraph">
-                                  <div class="line"></div>
-                                  <div class="line"></div>
-                                  <div class="line"></div>
-                                  <div class="line"></div>
-                                  <div class="line"></div>
-                              </div>
-                              <div class="paragraph">
-                                  <div class="line"></div>
-                                  <div class="line"></div>
-                                  <div class="line"></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+              <div>
+                 <h3 style={{marginTop: '3%', textAlign: 'center'}}> Current Fantasy Scores
+                 <i className="question circle outline icon" onClick={this.onPointSystemClick}></i></h3>
+                 <div className="ui divider" style={{marginLeft: '26%', marginRight: '25%'}}></div>
+                 <p style={{textAlign: 'center'}}> API CALLS HERE FOR PLAYER INFO AND RANDOMIZED PLAYER SCORE </p>
               </div>
           </div>
       );
