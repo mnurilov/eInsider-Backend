@@ -32,7 +32,7 @@ This is eInsider we are a website that provides relevant eSports information on 
 
 #### `[GET] /home/`
 
-Returns a json with 4 of the most upcoming tournaments one for each eSport.
+Returns a json with 4 of the next upcoming tournaments one for each eSport.
 
 This is a sample `JSON` object one will receive after the `GET` request:
 
