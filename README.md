@@ -50,8 +50,8 @@ This is a sample `JSON` object one will receive after the `GET` request:
 
 - `game` can only be one of the four strings `League of Legends`, `Dota 2`, `Counter-Strike: Global Offensive`, `Overwatch`
 - `startTime` and `endTime` is in the format yyyy-mm-ddThh:ss:mmZ
-- `League Name` can be an empty string
-- `Serie Name` can be an empty string
+- `leagueName` can be an empty string
+- `serieName` can be an empty string
 
 ```json
 {
@@ -101,8 +101,8 @@ Earliest occuring tournament is first in the array and seconding earlier occurin
 The size of the array varies as it depends on how many tournaments are upcoming.
 
 - `startTime` and `endTime` is in the format yyyy-mm-ddThh:ss:mmZ
-- `League Name` can be an empty string
-- `Serie Name` can be an empty string
+- `leagueName` can be an empty string
+- `serieName` can be an empty string
 
 ```json
 [
@@ -144,8 +144,8 @@ Earliest occuring tournament is first in the array and seconding earlier occurin
 The size of the array varies as it depends on how many tournaments are upcoming.
 
 - `startTime` and `endTime` is in the format yyyy-mm-ddThh:ss:mmZ
-- `League Name` can be an empty string
-- `Serie Name` can be an empty string
+- `leagueName` can be an empty string
+- `serieName` can be an empty string
 
 ```json
 [
@@ -187,8 +187,8 @@ Earliest occuring tournament is first in the array and seconding earlier occurin
 The size of the array varies as it depends on how many tournaments are upcoming.
 
 - `startTime` and `endTime` is in the format yyyy-mm-ddThh:ss:mmZ
-- `League Name` can be an empty string
-- `Serie Name` can be an empty string
+- `leagueName` can be an empty string
+- `serieName` can be an empty string
 
 ```json
 [
@@ -222,8 +222,8 @@ Earliest occuring tournament is first in the array and seconding earlier occurin
 The size of the array varies as it depends on how many tournaments are upcoming.
 
 - `startTime` and `endTime` is in the format yyyy-mm-ddThh:ss:mmZ
-- `League Name` can be an empty string
-- `Serie Name` can be an empty string
+- `leagueName` can be an empty string
+- `serieName` can be an empty string
 
 ```json
 [
