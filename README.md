@@ -7,8 +7,10 @@ This is eInsider we are a website that provides relevant eSports information on 
   - [API Overview](#api-overview)
     - [Base](#base)
     - [Home](#home)
+    - [Fantasy](#fantasy)
   - [API Details](#api-details)
     - [Home](#home)
+    - [Fantasy](#fantasy)
 
 # Backend
 
@@ -30,11 +32,17 @@ This is eInsider we are a website that provides relevant eSports information on 
 | [`[GET] /home/ow`](#get-homeow)       | all upcoming tournaments for Overwatch     |
 | [`[GET] /home/csgo`](#get-homecsgo)   | all upcoming tournaments for CS:GO         |
 
+## Fantasy
+
+| endpoint                         | description                           |
+| -------------------------------- | ------------------------------------- |
+| [`[GET] /fantasy`](#get-fantasy) | data on the players in fantasy league |
+
 # API Details
 
 ## Home
 
-#### `[GET] /home/`
+#### `[GET] /home`
 
 Returns a json with 4 of the next upcoming tournaments one for each eSport.
 
@@ -243,5 +251,36 @@ The size of the array varies as it depends on how many tournaments are upcoming.
     "leagueName": "BLAST Pro Series",
     "serieName": "Madrid"
   }
+]
+```
+
+## Fantasy
+
+#### `[GET] /fantasy`
+
+Returns an array with 12 mock fantasy players
+
+This is a sample `array` one will receive after the `GET` request:
+
+```json
+[
+  {
+    "playerName": "Faker",
+    "game": "LoL",
+    "team": "SK Telecom T1",
+    "score": "19"
+  },
+  {
+    "playerName": "aphromoo",
+    "game": "LoL",
+    "team": "100 Thieves",
+    "score": "13"
+  },
+  {
+    "playerName": "Impact",
+    "game": "LoL",
+    "team": "Team Liquid",
+    "score": "11"
+  },
 ]
 ```
