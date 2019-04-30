@@ -12,18 +12,18 @@ const setup = () => {
     next();
   };
 
-  const GetNextUpcomingTournamentLol = (req, res, next) => {
+  const getNextUpcomingTournamentLol = (req, res, next) => {
     request
     .get(`https://api.pandascore.co/lol/tournaments/upcoming?sort=begin_at&token=${token}`)
     .set('Accept', 'application/json')
     .then(res => {
       upcomingTournaments["lol"] = {
-        Game: "League of Legends",
-        Tournament_Name: res.body[0].name,
-        Start_Time: res.body[0].begin_at,
-        End_Time: res.body[0].end_at,
-        League_Name: res.body[0].league.name,
-        Serie_Name: res.body[0].serie.name
+        game: "League of Legends",
+        tournamentName: res.body[0].name,
+        startTime: res.body[0].begin_at,
+        endTime: res.body[0].end_at,
+        leagueName: res.body[0].league.name,
+        serieName: res.body[0].serie.name
       };
       next();
     })
@@ -32,18 +32,18 @@ const setup = () => {
     });
   };
 
-  const GetNextUpcomingTournamentDota2 = (req, res, next) => {
+  const getNextUpcomingTournamentDota2 = (req, res, next) => {
     request
     .get(`https://api.pandascore.co/dota2/tournaments/upcoming?sort=begin_at&token=${token}`)
     .set('Accept', 'application/json')
     .then(res => {
       upcomingTournaments["dota2"] = {
-        Game: "Dota 2",
-        Tournament_Name: res.body[0].name,
-        Start_Time: res.body[0].begin_at,
-        End_Time: res.body[0].end_at,
-        League_Name: res.body[0].league.name,
-        Serie_Name: res.body[0].serie.name
+        game: "Dota 2",
+        tournamentName: res.body[0].name,
+        startTime: res.body[0].begin_at,
+        endTime: res.body[0].end_at,
+        leagueName: res.body[0].league.name,
+        serieName: res.body[0].serie.name
       };
       next();
     })
@@ -52,18 +52,18 @@ const setup = () => {
     });
   };
 
-  const GetNextUpcomingTournamentCSGO = (req, res, next) => {
+  const getNextUpcomingTournamentCSGO = (req, res, next) => {
     request
     .get(`https://api.pandascore.co/csgo/tournaments/upcoming?sort=begin_at&token=${token}`)
     .set('Accept', 'application/json')
     .then(res => {
       upcomingTournaments["csgo"] = {
-        Game: "Counter-Strike: Global Offensive",
-        Tournament_Name: res.body[0].name,
-        Start_Time: res.body[0].begin_at,
-        End_Time: res.body[0].end_at,
-        League_Name: res.body[0].league.name,
-        Serie_Name: res.body[0].serie.name
+        game: "Counter-Strike: Global Offensive",
+        tournamentName: res.body[0].name,
+        startTime: res.body[0].begin_at,
+        endTime: res.body[0].end_at,
+        leagueName: res.body[0].league.name,
+        serieName: res.body[0].serie.name
       };
       next();
     })
@@ -72,18 +72,18 @@ const setup = () => {
     });
   };
 
-  const GetNextUpcomingTournamentOW = (req, res, next) => {
+  const getNextUpcomingTournamentOW = (req, res, next) => {
     request
     .get(`https://api.pandascore.co/ow/tournaments/upcoming?sort=begin_at&token=${token}`)
     .set('Accept', 'application/json')
     .then(res => {
       upcomingTournaments["ow"] = {
-        Game: "Overwatch",
-        Tournament_Name: res.body[0].name,
-        Start_Time: res.body[0].begin_at,
-        End_Time: res.body[0].end_at,
-        League_Name: res.body[0].league.name,
-        Serie_Name: res.body[0].serie.name
+        game: "Overwatch",
+        tournamentName: res.body[0].name,
+        startTime: res.body[0].begin_at,
+        endTime: res.body[0].end_at,
+        leagueName: res.body[0].league.name,
+        serieName: res.body[0].serie.name
       };
       next();
     })
@@ -101,10 +101,10 @@ const setup = () => {
   
   return [
     logEndpoint,
-    GetNextUpcomingTournamentLol,
-    GetNextUpcomingTournamentDota2,
-    GetNextUpcomingTournamentCSGO,
-    GetNextUpcomingTournamentOW, 
+    getNextUpcomingTournamentLol,
+    getNextUpcomingTournamentDota2,
+    getNextUpcomingTournamentCSGO,
+    getNextUpcomingTournamentOW, 
     sendResponse
   ];
 };
