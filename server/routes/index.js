@@ -17,11 +17,12 @@ const routes = () => {
   app.use('/signup', require('./signup')());
 
   app.use('/', (req, res, next) => {
+    console.log("You have hit [GET] / endpoint");
+    let responseMessage = 'Welcome to eInsider api';
+    console.log("Sending back the following message:\n" + responseMessage);
     return res
       .status(200)
-      .send(
-        `Welcome to eInsider api`
-      );
+      .send(responseMessage);
   });
  
   return app;
