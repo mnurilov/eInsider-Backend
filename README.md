@@ -8,7 +8,9 @@ This is eInsider we are a website that provides relevant eSports information on 
     - [Base](#base)
     - [Home](#home)
   - [API Details](#api-details)
+    - [Home](#home)
 
+# Backend
 
 # API Overview
 
@@ -72,6 +74,6 @@ This is a sample `JSON` object one will receive after the `GET` request:
 ```
 
 - `game` can only be one of the four strings `League of Legends`, `Dota 2`, `Counter-Strike: Global Offensive`, `Overwatch`
-- `startTime` and `endTime` is in the format YYYY-MM-DDTHH:SS:MMZ
+- `startTime` and `endTime` is in the format yyyy-mm-ddThh:ss:mmZ
 - `League Name` can be an empty string
 - `Serie Name` can be an empty string
