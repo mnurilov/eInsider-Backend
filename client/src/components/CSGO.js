@@ -1,10 +1,18 @@
 import React from 'react';
+import axios from 'axios';
 
 class CSGO extends React.Component {
   constructor(props){
     super(props);
 
     this.onHomeClick = this.onHomeClick.bind(this);
+
+    axios.get('http://localhost:7000/home/csgo')
+    .then(res => {
+       const csgoData = res.data;
+       this.setState({csgoData})
+       //console.log(schedule); 
+    })
   }
 
   onHomeClick = (event) => {
@@ -26,7 +34,7 @@ class CSGO extends React.Component {
 
         <div class="ui piled segment" style={{marginLeft: '20%', marginRight: '20%'}}>
           <h4 class="ui header">Schedule</h4>
-          <p>Schedule will be under here</p>
+          <p></p>
         </div>
       </div>
     );
