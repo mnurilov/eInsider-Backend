@@ -1,4 +1,5 @@
  import React from 'react';
+ import axios from 'axios';
 
  let session = true;
 
@@ -16,8 +17,19 @@
      this.onDotaClick = this.onDotaClick.bind(this);
      this.onCSGOClick = this.onCSGOClick.bind(this);
 
-    //  this.state
+    this.state = {
+      schedule : {}
+    }
+
+    axios.get('http://localhost:7000/home')
+    .then(res => {
+       const schedule = res.data;
+       this.setState({schedule})
+       //console.log(schedule); 
+    })
    }
+
+
 
    onFavoritesClick = (event) => {
      console.log('my faves');
@@ -71,6 +83,7 @@
    }
 
    render(){
+     
      if(this.checkIfInSession()){
        return (
            <div>
@@ -86,9 +99,11 @@
                </div>
 
                <div>
-                  <h3 style={{marginTop: '3%', textAlign: 'center'}}> Schedule for Future Tournaments </h3>
+               <p style={{textAlign: 'center'}}> {JSON.stringify(this.state.schedule)} </p>
                   <div className="ui divider" style={{marginLeft: '26%', marginRight: '25%'}}></div>
-                  <p style={{textAlign: 'center'}}> API CALLS HERE FOR SCHEDULE </p>
+                  <p style={{textAlign: 'center'}}> {
+                    
+                  } </p>
                </div>
 
               <div className="ui medium images" style={{marginLeft: '26.5%', marginRight: '15%', marginTop: '3%', }}>
@@ -113,7 +128,7 @@
                  <div>
                     <h3 style={{marginTop: '3%', textAlign: 'center'}}> Schedule for Future Tournaments </h3>
                     <div className="ui divider" style={{marginLeft: '26%', marginRight: '25%'}}></div>
-                    <p style={{textAlign: 'center'}}> API CALLS HERE FOR SCHEDULE </p>
+                    <p style={{textAlign: 'center'}}> {console.log(JSON.stringify(this.state.schedule))} </p>
                  </div>
 
                 <div className="ui medium images" style={{marginLeft: '26.5%', marginRight: '15%', marginTop: '3%', }}>
