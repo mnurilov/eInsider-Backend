@@ -1,12 +1,12 @@
 const express = require('express');
 
-const routes = () => {
-  
+const routes = context => {
+
   const app = express();
   
   app.use('/home', require('./home')());
   app.use('/fantasy', require('./fantasy')());
-  app.use('/profile', require('./profile')());
+  app.use('/profile', require('./profile')(context));
   app.use('/login', require('./login')());
   app.use('/signup', require('./signup')());
 
@@ -22,8 +22,8 @@ const routes = () => {
   return app;
 };
 
-const attachRoutes = app => {
-  app.use('/', routes());
+const attachRoutes = (app, context) => {
+  app.use('/', routes(context));
 };
 
 module.exports = attachRoutes;

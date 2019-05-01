@@ -1,8 +1,8 @@
 const express = require('express');
 const { profile } = require('../controllers');
 
-const setup = () => {
-  const controller = profile();
+const setup = context => {
+  const controller = profile(context);
   
   const router = express.Router();
 

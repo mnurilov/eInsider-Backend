@@ -1,6 +1,14 @@
-const setup = () => {
-  const printReq = (req, res, next) => {
-    console.log("I HIT THE PROFILE BACKEND");
+const setup = (context) => {
+  const logEndpoint = (req, res, next) => {
+    console.log("You have hit [GET] /profile endpoint");
+    const user = context.models.user;
+    user.findAll({
+      where: {
+        username: 'Kyle'
+      }
+    }).then((res) => {
+      console.log(res);
+    })
     next();
   };
 
@@ -11,7 +19,7 @@ const setup = () => {
   };
   
   return [
-    printReq,
+    logEndpoint,
     sendResponse
   ];
 };
