@@ -46,14 +46,14 @@ class Home extends React.Component {
   render(){
       return (
           <div>
-              <h1 style={{textAlign: 'center', marginTop: '3%'}}>eInsider</h1>
-              <div className="ui secondary  menu" style={{width: '50%', marginLeft: '26%'}}>
-                  <a className="item" onClick={this.onHomeClick}>Home</a>
-                  <a className="item" onClick={this.onFavoritesClick}>Favorites</a>
-                  <a className="item active">Fantasy</a>
-                  <a className="item" onClick={this.onProfileClick}>Profile</a>
+              <h1 style={{marginTop: '3%'}}>eInsider</h1>
+              <div className="ui secondary menu" style={{width: '50%', marginLeft: '26%'}}>
+                  <a className="item" onClick={this.onHomeClick} href="/">Home</a>
+                  <a className="item" onClick={this.onFavoritesClick} href="/favorites">Favorites</a>
+                  <a className="item active" href="/">Fantasy</a>
+                  <a className="item" onClick={this.onProfileClick} href="/profile">Profile</a>
                   <div className="right menu">
-                      <a className="ui item" onClick={this.onHomeClick}>Logout</a>
+                      <a className="ui item" onClick={this.onHomeClick} href="/">Logout</a>
                   </div>
               </div>
 

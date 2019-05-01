@@ -1,10 +1,14 @@
 import React from 'react';
+import logo from '../images/lollandscape.jpeg';
+import '../styles/Games.css';
 
 class LoL extends React.Component {
   constructor(props){
     super(props);
 
     this.onHomeClick = this.onHomeClick.bind(this);
+    this.onFavoriteClick = this.onFavoriteClick.bind(this);
+    this.onUnfavoriteClick = this.onUnfavoriteClick.bind(this);
   }
 
   onHomeClick = (event) => {
@@ -12,21 +16,28 @@ class LoL extends React.Component {
     window.location.replace('/');
   }
 
+  onFavoriteClick = (event) => {
+    console.log('fav');
+  }
+
+  onUnfavoriteClick = (event) => {
+    console.log('unfav');
+  }
+
   render(){
     return(
       <div>
-        <h1 style={{textAlign: 'center', marginTop: '3%'}} onClick={this.onHomeClick}>eInsider</h1>
-        <h3 style={{textAlign: 'center'}}> Image Will Be Here </h3>
-        <h1 style={{textAlign: 'center'}}> League of Legends </h1>
-
-        <div class="ui piled segment" style={{marginLeft: '20%', marginRight: '20%'}}>
-          <h4 class="ui header">Scores</h4>
-          <p>Scores will be under here</p>
+        <h1 style={{marginTop: '3%'}} onClick={this.onHomeClick}>eInsider</h1>
+        <img src={logo} alt="League of Legends" />
+        <div className="ui tiny buttons">
+          <button className="ui button black" onClick={this.onFavoriteClick}><i className="star icon" />Favorite</button>
+          <div className="or"></div>
+          <button className="ui button" onClick={this.onUnfavoriteClick}><i className="star outline icon" />Unfavorite</button>
         </div>
 
-        <div class="ui piled segment" style={{marginLeft: '20%', marginRight: '20%'}}>
-          <h4 class="ui header">Schedule</h4>
-          <p>Schedule will be under here</p>
+        <div className="ui piled segment">
+          <h4 className="ui header">Schedule</h4>
+          <p>Schedule will be under here so API CALLS HERE</p>
         </div>
       </div>
     );

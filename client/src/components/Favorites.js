@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/Favorites.css';
 import axios from 'axios';
 
 class Favorites extends React.Component {
@@ -17,7 +18,7 @@ class Favorites extends React.Component {
     .then(res => {
        const favorites = res.data;
        this.setState({favorites})
-       //console.log(schedule); 
+       //console.log(schedule);
     })
   }
 
@@ -45,19 +46,19 @@ class Favorites extends React.Component {
     return(
       <div>
         <h1 style={{textAlign: 'center', marginTop: '3%'}}>eInsider</h1>
-        <div className="ui secondary  menu" style={{width: '50%', marginLeft: '26%'}}>
-            <a className="item" onClick={this.onHomeClick}>Home</a>
-            <a className="item active">Favorites</a>
-            <a className="item" onClick={this.onFantasyClick}>Fantasy</a>
-            <a className="item" onClick={this.onProfileClick}>Profile</a>
+        <div className="ui secondary menu">
+            <a className="item" onClick={this.onHomeClick} href="/">Home</a>
+            <a className="item active" href="/favorites">Favorites</a>
+            <a className="item" onClick={this.onFantasyClick} href="/fantasy">Fantasy</a>
+            <a className="item" onClick={this.onProfileClick} href="/profile">Profile</a>
             <div className="right menu">
-                <a className="ui item" >Logout</a>
+                <a className="ui item" href="/">Logout</a>
             </div>
         </div>
 
         <div>
           <h3 style={{marginTop: '3%', textAlign: 'center'}}> Your Favorites </h3>
-          <div className="ui divider" style={{marginLeft: '26%', marginRight: '25%'}}></div>
+          <div className="ui divider"></div>
           {/* <p style={{textAlign: 'center'}}> {JSON.stringify(this.state.favorites)} </p> */}
           <p style={{textAlign: 'center'}}> {JSON.stringify(this.state.favorites)} </p>
         </div>

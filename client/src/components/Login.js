@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/Login.css';
 
 class Login extends React.Component {
   constructor(props){
@@ -20,36 +21,33 @@ class Login extends React.Component {
 
   render(){
     return(
-      <div style={{marginLeft: '35%', marginRight:'35%', marginTop: '16%'}}>
-        <div class="ui middle aligned center aligned grid">
-          <div class="column">
-            <h2 class="ui black image header">
-              <div class="content">
+      <div className="login">
+        <div className="ui middle aligned center aligned grid">
+          <div className="column">
+            <h2 className="ui black image header">
+              <div className="content">
                 Log-in to your account
               </div>
             </h2>
-            <form class="ui large form">
-              <div class="ui stacked segment">
-                <div class="field">
-                  <div class="ui left icon input">
-                    <i class="user icon"></i>
+            <form className="ui large form">
+              <div className="ui stacked segment">
+                <div className="field">
+                  <div className="ui left icon input">
+                    <i className="user icon"></i>
                     <input type="text" name="email" placeholder="Username"/>
                   </div>
                 </div>
-                <div class="ui fluid large black submit button">Login</div>
+                <div className="ui fluid large black submit button">Login</div>
               </div>
-              <div class="ui error message"></div>
+              <div className="ui error message"></div>
             </form>
 
-            <div class="ui message">
-              New to eInsider? <a href="#" onClick={this.onSignUpClick}>Register</a>
+            <div className="ui message">
+              New to eInsider? <a href="/signup" onClick={this.onSignUpClick}>Register</a>
             </div>
           </div>
         </div>
-        <div class="ui fluid large black submit button"
-          style={{marginTop: '3%'}}
-          onClick={this.onHomeClick}
-        >
+        <div className="ui fluid large black submit button" onClick={this.onHomeClick}>
           Go Back Home
         </div>
       </div>

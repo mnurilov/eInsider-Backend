@@ -1,4 +1,9 @@
  import React from 'react';
+ import overwatch from '../images/overwatch.jpg';
+ import lol from '../images/lol.jpg';
+ import dota from '../images/dota.jpg';
+ import csgo from '../images/CSGO.jpg';
+ import '../styles/Home.css';
  import axios from 'axios';
 
  let session = true;
@@ -25,11 +30,9 @@
     .then(res => {
        const schedule = res.data;
        this.setState({schedule})
-       //console.log(schedule); 
+       //console.log(schedule);
     })
    }
-
-
 
    onFavoritesClick = (event) => {
      console.log('my faves');
@@ -83,59 +86,57 @@
    }
 
    render(){
-     
+
      if(this.checkIfInSession()){
        return (
            <div>
-               <h1 style={{textAlign: 'center', marginTop: '3%'}}>eInsider</h1>
-               <div className="ui secondary  menu" style={{width: '50%', marginLeft: '26%'}}>
-                   <a className="item active">Home</a>
-                   <a className="item" onClick={this.onFavoritesClick}>Favorites</a>
-                   <a className="item" onClick={this.onFantasyClick}>Fantasy</a>
-                   <a className="item" onClick={this.onProfileClick}>Profile</a>
+               <h1 style={{marginTop: '3%'}}>eInsider</h1>
+               <div className="ui secondary menu">
+                   <a className="item active" href="/">Home</a>
+                   <a className="item" onClick={this.onFavoritesClick} href="/favorites">Favorites</a>
+                   <a className="item" onClick={this.onFantasyClick} href="/fantasy">Fantasy</a>
+                   <a className="item" onClick={this.onProfileClick} href="/profile">Profile</a>
                    <div className="right menu">
                        <a className="ui item" onClick={this.onLogoutClick}>Logout</a>
                    </div>
                </div>
 
                <div>
-               <p style={{textAlign: 'center'}}> {JSON.stringify(this.state.schedule)} </p>
-                  <div className="ui divider" style={{marginLeft: '26%', marginRight: '25%'}}></div>
-                  <p style={{textAlign: 'center'}}> {
-                    
-                  } </p>
+                  <h3 style={{marginTop: '3%', textAlign: 'center'}}> Schedule for Future Tournaments </h3>
+                  <div className="ui divider"></div>
+                    <p style={{textAlign: 'center'}}> {JSON.stringify(this.state.schedule)} </p>
                </div>
 
-              <div className="ui medium images" style={{marginLeft: '26.5%', marginRight: '15%', marginTop: '3%', }}>
-                <img src="https://hdqwalls.com/download/overwatch-game-all-heroes-1600x900.jpg" onClick={this.onOverwatchClick} style={{borderRadius: '10px'}} />
-                <img src="http://eskipaper.com/images/league-of-legends-wallpaper-8.jpg" onClick={this.onLoLClick} style={{borderRadius: '10px'}} />
-                <img src="https://images4.alphacoders.com/210/210396.jpg" onClick={this.onDotaClick} style={{borderRadius: '10px'}} />
-                <img src="https://webgameapp.com/web/wallpapers/csgo-wallpapers/1600x900.jpg" onClick={this.onCSGOClick} style={{borderRadius: '10px'}} />
+              <div className="ui medium images">
+                <img src={overwatch} alt="Overwatch" onClick={this.onOverwatchClick} />
+                <img src={lol} alt="League Of Legends" onClick={this.onLoLClick} />
+                <img src={dota} alt="Dota 2"onClick={this.onDotaClick} />
+                <img src={csgo} alt="CS:GO" onClick={this.onCSGOClick} />
               </div>
            </div>
        );
      } else {
          return (
              <div>
-                 <h1 style={{textAlign: 'center', marginTop: '3%'}}>eInsider</h1>
-                 <div className="ui secondary  menu" style={{width: '50%', marginLeft: '26%'}}>
-                     <a className="item active">Home</a>
+                 <h1 style={{marginTop: '3%'}}>eInsider</h1>
+                 <div className="ui secondary menu">
+                     <a className="item active" href="/">Home</a>
                      <div className="right menu">
-                         <a className="ui item" onClick={this.onLoginClick}>Login</a>
+                         <a className="ui item" onClick={this.onLoginClick} href="/login">Login</a>
                      </div>
                  </div>
 
                  <div>
                     <h3 style={{marginTop: '3%', textAlign: 'center'}}> Schedule for Future Tournaments </h3>
-                    <div className="ui divider" style={{marginLeft: '26%', marginRight: '25%'}}></div>
+                    <div className="ui divider"></div>
                     <p style={{textAlign: 'center'}}> {console.log(JSON.stringify(this.state.schedule))} </p>
                  </div>
 
-                <div className="ui medium images" style={{marginLeft: '26.5%', marginRight: '15%', marginTop: '3%', }}>
-                  <img src="https://hdqwalls.com/download/overwatch-game-all-heroes-1600x900.jpg" onClick={this.onOverwatchClick} style={{borderRadius: '10px'}} />
-                  <img src="http://eskipaper.com/images/league-of-legends-wallpaper-8.jpg" onClick={this.onLoLClick} style={{borderRadius: '10px'}} />
-                  <img src="https://images4.alphacoders.com/210/210396.jpg" onClick={this.onDotaClick} style={{borderRadius: '10px'}} />
-                  <img src="https://webgameapp.com/web/wallpapers/csgo-wallpapers/1600x900.jpg" onClick={this.onCSGOClick} style={{borderRadius: '10px'}} />
+                <div className="ui medium images">
+                  <img src={overwatch} alt="Overwatch" onClick={this.onOverwatchClick} />
+                  <img src={lol} alt="League Of Legends" onClick={this.onLoLClick} />
+                  <img src={dota} alt="Dota 2" onClick={this.onDotaClick} />
+                  <img src={csgo} alt="CS:GO" onClick={this.onCSGOClick} />
                 </div>
              </div>
          );
