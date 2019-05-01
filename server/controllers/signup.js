@@ -1,6 +1,12 @@
-const setup = () => {
-  const printReq = (req, res, next) => {
-    console.log("I HIT THE SIGNUP BACKEND");
+const setup = (context) => {
+  const logEndpoint = (req, res, next) => {
+    console.log("You have hit [POST] /signup endpoint");
+    console.log(JSON.stringify(req.body, null, 2));
+    const models = context.models;
+    models.sequelize.query(`INSERT INTO "users" (username, password) VALUES ('${req.body.username}', '${req.body.password}');`)
+    .then((res) => {
+      console.log(res);
+    })
     next();
   };
 
@@ -11,7 +17,7 @@ const setup = () => {
   };
   
   return [
-    printReq,
+    logEndpoint,
     sendResponse
   ];
 };

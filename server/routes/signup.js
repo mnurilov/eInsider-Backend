@@ -1,13 +1,13 @@
 const express = require('express');
 const { signup } = require('../controllers');
 
-const setup = () => {
-  const controller = signup();
+const setup = (context) => {
+  const controller = signup(context);
   
   const router = express.Router();
 
   // Attaches middleware to route
-  router.get('/', controller);
+  router.post('/', controller);
 
   return router;
 }

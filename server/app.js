@@ -1,11 +1,18 @@
 const express = require('express')
 const app = express();
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const models = require('./database/models');
 
 const port = process.env.PORT || 7000
 
 const attachRoutes = require('./routes');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(cookieParser());
 
 const context = {
   models
