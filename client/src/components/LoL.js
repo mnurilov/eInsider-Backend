@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../images/lollandscape.jpeg';
 import '../styles/Games.css';
+import axios from 'axios';
 
 class LoL extends React.Component {
   constructor(props){
@@ -9,6 +10,16 @@ class LoL extends React.Component {
     this.onHomeClick = this.onHomeClick.bind(this);
     this.onFavoriteClick = this.onFavoriteClick.bind(this);
     this.onUnfavoriteClick = this.onUnfavoriteClick.bind(this);
+
+    this.state = {
+      schedule: {}
+    }
+
+    axios.get('http://localhost:7000/home/lol')
+    .then(res => {
+      const lolData = res.data;
+      this.setState({lolData})
+    })
   }
 
   onHomeClick = (event) => {
@@ -18,10 +29,26 @@ class LoL extends React.Component {
 
   onFavoriteClick = (event) => {
     console.log('fav');
+
+    axios.post('http://localhost:7000/users/favorites', {
+      "lol": true
+    }).then(response => {
+      console.log(response)
+    }).catch(error => {
+      console.log(error.response)
+    })
   }
 
   onUnfavoriteClick = (event) => {
     console.log('unfav');
+
+    axios.post('http://localhost:7000/users/favorites', {
+      "lol": false
+    }).then(response => {
+      console.log(response)
+    }).catch(error => {
+      console.log(error.response)
+    })
   }
 
   render(){
@@ -37,7 +64,7 @@ class LoL extends React.Component {
 
         <div className="ui piled segment">
           <h4 className="ui header">Schedule</h4>
-          <p>Schedule will be under here so API CALLS HERE</p>
+          <p>{JSON.stringify(this.state.lolData)}</p>
         </div>
       </div>
     );

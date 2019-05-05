@@ -18,7 +18,6 @@ class Home extends React.Component {
     .then(res => {
        const randomizedScore = res.data;
        this.setState({randomizedScore})
-       //console.log(schedule); 
     })
 
   }

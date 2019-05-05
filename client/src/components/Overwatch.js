@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../images/overwatchlandscape.jpeg';
+import axios from 'axios';
 
 class Overwatch extends React.Component {
   constructor(props){
@@ -8,6 +9,16 @@ class Overwatch extends React.Component {
     this.onHomeClick = this.onHomeClick.bind(this);
     this.onFavoriteClick = this.onFavoriteClick.bind(this);
     this.onUnfavoriteClick = this.onUnfavoriteClick.bind(this);
+
+    this.state = {
+      schedule: {}
+    }
+
+    axios.get('http://localhost:7000/home/ow')
+    .then(res => {
+      const owData = res.data;
+      this.setState({owData})
+    })
   }
 
   onHomeClick = (event) => {
@@ -17,12 +28,26 @@ class Overwatch extends React.Component {
 
   onFavoriteClick = (event) => {
     console.log('fav');
-    // api call made here with axios to send boolean type true
+
+    axios.post('http://localhost:7000/users/favorites', {
+      "ow": true
+    }).then(response => {
+      console.log(response)
+    }).catch(error => {
+      console.log(error.response)
+    })
   }
 
   onUnfavoriteClick = (event) => {
     console.log('unfav');
-    // api call made here with axios to send boolean type false
+
+    axios.post('http://localhost:7000/users/favorites', {
+      "ow": false
+    }).then(response => {
+      console.log(response)
+    }).catch(error => {
+      console.log(error.response)
+    })
   }
 
   render(){
@@ -38,7 +63,7 @@ class Overwatch extends React.Component {
 
         <div className="ui piled segment" >
           <h4 className="ui header">Schedule</h4>
-          <p>Schedule will be under here so API CALLS HERE</p>
+          <p>{JSON.stringify(this.state.owData)}</p>
         </div>
       </div>
     );

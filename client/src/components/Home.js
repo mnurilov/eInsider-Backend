@@ -5,6 +5,7 @@
  import csgo from '../images/CSGO.jpg';
  import '../styles/Home.css';
  import axios from 'axios';
+ import GameSchedule from './GameSchedule';
 
  let session = true;
 
@@ -30,7 +31,6 @@
     .then(res => {
        const schedule = res.data;
        this.setState({schedule})
-       //console.log(schedule);
     })
    }
 
@@ -57,6 +57,13 @@
    onLogoutClick = (event) => {
      session = false;
      this.forceUpdate();
+
+     axios.delete('http://localhost:7000/users/logout')
+     .then(response => {
+       console.log(response)
+     }).catch(error => {
+       console.log(error.response)
+     })
    }
 
    checkIfInSession = () => {
@@ -104,7 +111,17 @@
                <div>
                   <h3 style={{marginTop: '3%', textAlign: 'center'}}> Schedule for Future Tournaments </h3>
                   <div className="ui divider"></div>
-                    <p style={{textAlign: 'center'}}> {JSON.stringify(this.state.schedule)} </p>
+                  <div className="ui cards" style={{width: '100%', marginLeft: '24.6%', marginRight: '25%'}}>
+                    <GameSchedule title="League"/>
+                    <GameSchedule title="Overwatch"/>
+                    <GameSchedule title="CSGO"/>
+                    <GameSchedule title="Dota 2"/>
+                  </div>
+                  <br /><br /><br />
+                  <p style={{textAlign: 'center'}}>League of Legends: {JSON.stringify(this.state.schedule.lol || {}.game)}</p>
+                  <p style={{textAlign: 'center'}}>Overwatch: {JSON.stringify(this.state.schedule.ow)}</p>
+                  <p style={{textAlign: 'center'}}>Dota 2: {JSON.stringify(this.state.schedule.dota2)}</p>
+                  <p style={{textAlign: 'center'}}>CSGO: {JSON.stringify(this.state.schedule.csgo)}</p>
                </div>
 
               <div className="ui medium images">
@@ -129,15 +146,25 @@
                  <div>
                     <h3 style={{marginTop: '3%', textAlign: 'center'}}> Schedule for Future Tournaments </h3>
                     <div className="ui divider"></div>
-                    <p style={{textAlign: 'center'}}> {console.log(JSON.stringify(this.state.schedule))} </p>
+                    <div className="ui cards" style={{width: '100%', marginLeft: '24.6%', marginRight: '25%'}}>
+                      <GameSchedule title="League"/>
+                      <GameSchedule title="Overwatch"/>
+                      <GameSchedule title="CSGO"/>
+                      <GameSchedule title="Dota 2"/>
+                    </div>
+                    <br /><br /><br />
+                    <p style={{textAlign: 'center'}}>League of Legends: {JSON.stringify(this.state.schedule.lol || {}.game)}</p>
+                    <p style={{textAlign: 'center'}}>Overwatch: {JSON.stringify(this.state.schedule.ow)}</p>
+                    <p style={{textAlign: 'center'}}>Dota 2: {JSON.stringify(this.state.schedule.dota2)}</p>
+                    <p style={{textAlign: 'center'}}>CSGO: {JSON.stringify(this.state.schedule.csgo)}</p>
                  </div>
 
-                <div className="ui medium images">
+                 <div className="ui medium images">
                   <img src={overwatch} alt="Overwatch" onClick={this.onOverwatchClick} />
                   <img src={lol} alt="League Of Legends" onClick={this.onLoLClick} />
-                  <img src={dota} alt="Dota 2" onClick={this.onDotaClick} />
+                  <img src={dota} alt="Dota 2"onClick={this.onDotaClick} />
                   <img src={csgo} alt="CS:GO" onClick={this.onCSGOClick} />
-                </div>
+                 </div>
              </div>
          );
      }

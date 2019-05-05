@@ -14,11 +14,12 @@ class Favorites extends React.Component {
       favorites : {}
     }
 
-    axios.get('http://localhost:7000/favorites')
+    axios.get('http://localhost:7000/users/profile')
     .then(res => {
        const favorites = res.data;
        this.setState({favorites})
-       //console.log(schedule);
+    }).catch(error => {
+      console.log(error.response)
     })
   }
 
