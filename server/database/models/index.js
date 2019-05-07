@@ -12,7 +12,15 @@ NOTE: Put your own database name under the config.json file. I will find a way t
 */
 
 const url = process.env.NODE_ENV === 'production' ? process.env.DATABASE_URL : `postgres://${config.postgresUsername}@localhost:5432/einsider`;
-const sequelize = new Sequelize(url);
+console.log(process.env.NODE_ENV);
+console.log(url);
+const sequelize = new Sequelize(url, {
+  dialect: 'postgres',
+  protocol: 'postgres',
+  dialectOptions: {
+    ssl: true
+  }
+});
 
 fs.readdirSync(__dirname)
   .filter(file => {

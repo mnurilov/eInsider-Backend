@@ -4,11 +4,11 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
-const models = require('./database/models');
+const models = require('./server/database/models');
 
 const port = process.env.PORT || 7000
 
-const attachRoutes = require('./routes');
+const attachRoutes = require('./server/routes');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
