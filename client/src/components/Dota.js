@@ -31,6 +31,10 @@ class Dota extends React.Component {
 
   onFavoriteClick = (event) => {
     console.log('fav');
+    let res = localStorage.getItem('session');
+    let data = JSON.parse(res);
+    data["dota2"] = true;
+    localStorage.setItem('session', JSON.stringify(data));
 
     axios.post('http://localhost:7000/users/favorites', {
       "dota2": true
@@ -43,6 +47,10 @@ class Dota extends React.Component {
 
   onUnfavoriteClick = (event) => {
     console.log('unfav');
+    let res = localStorage.getItem('session');
+    let data = JSON.parse(res);
+    data["dota2"] = false;
+    localStorage.setItem('session', JSON.stringify(data));
 
     axios.post('http://localhost:7000/users/favorites', {
       "dota2": false
@@ -67,7 +75,7 @@ class Dota extends React.Component {
 
     return(
       <div>
-        <h1 style={{marginTop: '3%'}} onClick={this.onHomeClick}>eInsider</h1>
+        <h1 className="title" style={{marginTop: '3%'}} onClick={this.onHomeClick}>eInsider</h1>
         <img src={logo} alt="Dota 2"/>
         <div className="ui tiny buttons">
           <button className="ui button black" onClick={this.onFavoriteClick}><i className="star icon" />Favorite</button>

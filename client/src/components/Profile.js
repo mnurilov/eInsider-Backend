@@ -17,6 +17,7 @@ class Profile extends React.Component {
     this.onOverwatchClick = this.onOverwatchClick.bind(this);
     this.onDotaClick = this.onDotaClick.bind(this);
     this.onCSGOClick = this.onCSGOClick.bind(this);
+    this.onLogoutClick = this.onLogoutClick.bind(this);
 
     this.state  = {
       username : "",
@@ -76,8 +77,38 @@ class Profile extends React.Component {
     window.location.replace('/csgo');
   }
 
+  onLogoutClick = (event) => {
+    localStorage.clear();
+
+    axios.delete('http://localhost:7000/users/logout')
+    .then(response => {
+      console.log(response)
+    }).catch(error => {
+      console.log(error.response)
+    })
+
+    window.location.replace('/');
+  }
 
   render(){
+    let table = [];
+    let res = localStorage.getItem('session');
+    let data = JSON.parse(res);
+    let username = data['username'];
+
+    if(data['ow'] === true){
+      table.push(<img src={overwatch} alt="Overwatch" onClick={this.onOverwatchClick} />)
+    }
+    if(data['lol'] === true){
+      table.push(<img src={lol} alt="League of Legends" onClick={this.onLoLClick} />)
+    }
+    if(data['dota2'] === true){
+      table.push(<img src={dota} alt="Dota 2" onClick={this.onDotaClick} />)
+    }
+    if(data['csgo'] === true){
+      table.push(<img src={csgo} alt="Counter Strike:Global Strike" onClick={this.onCSGOClick} />)
+    }
+
     return (
             <div>
                 <h1 style={{textAlign: 'center', marginTop: '3%'}}>eInsider</h1>
@@ -87,20 +118,22 @@ class Profile extends React.Component {
                     <a className="item" onClick={this.onFantasyClick} href="/fantasy">Fantasy</a>
                     <a className="item active" href="/profile">Profile</a>
                     <div className="right menu">
-                        <a className="ui item" onClick={this.onHomeClick}>Logout</a>
+                        <a className="ui item" onClick={this.onLogoutClick} href="/">Logout</a>
                     </div>
                 </div>
 
                 <div>
                   <h3 style={{marginTop: '3%', textAlign: 'center'}}> Your Information </h3>
                   <div className="ui divider"></div>
-                  <p style={{textAlign: 'center'}}> {JSON.stringify(this.state.profile)} </p>
+                  <p style={{textAlign: 'center'}}> Your Username: {username} </p>
                 </div>
 
                 <div>
                    <h3 style={{marginTop: '3%', textAlign: 'center'}}> Your Favorites </h3>
                    <div className="ui divider"></div>
-                   <p style={{textAlign: 'center'}}> {JSON.stringify(this.state.favorites)} </p>
+                   <div className="ui medium images" style={{marginTop: '0%'}}>
+                     {table}
+                   </div>
                 </div>
             </div>
         );
