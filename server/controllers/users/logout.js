@@ -18,14 +18,7 @@ const setup = () => {
   }
 
   const sendResponse = (req, res, next) => {
-    req.session.destroy(function(err) {
-      if(err) {
-        console.log(err.message);
-        return res
-        .status(400)
-        .send(err.message);
-      }
-    });
+    req.session = null;
     console.log('logged out successfully')
     res
     .status(200)

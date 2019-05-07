@@ -13,9 +13,8 @@ const attachRoutes = require('./server/routes');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(session({secret: 'eInsiderSession'}));
-
 app.use(cookieParser());
+app.use(session({secret: 'eInsiderSession'}));
 
 const context = {
   models
