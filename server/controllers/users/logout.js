@@ -21,6 +21,7 @@ const setup = () => {
 
   const sendResponse = (req, res, next) => {
     req.session = null;
+    req.session.destroy();
     console.log('logged out successfully')
     res
     .status(200)

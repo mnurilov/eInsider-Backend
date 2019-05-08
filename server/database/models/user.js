@@ -32,6 +32,10 @@ module.exports = (sequelize, DataTypes) => {
       ow: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
+      },
+      logged: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
       }
     },
     {
