@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const cookieSession = require('cookie-session')
 
 const models = require('./server/database/models');
 
@@ -14,7 +15,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cookieParser());
-app.use(session({secret: 'eInsiderSession'}));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['eInsiderSession'],
+}))
 
 const context = {
   models
