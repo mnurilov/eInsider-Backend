@@ -9,6 +9,8 @@ const setup = () => {
   
   const logEndpoint = (req, res, next) => {
     console.log("You have hit [GET] /home/lol endpoint");
+    upcomingTournaments = []; 
+
     next();
   };
 
