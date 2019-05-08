@@ -4,6 +4,7 @@ const setup = (context) => {
   const user = context.models.user;
   const models = context.models;
 
+
   const logEndpoint = (req, res, next) => {
     console.log("You have hit [POST] /users/register endpoint");
     console.log("SESSION: \n", req.session);
