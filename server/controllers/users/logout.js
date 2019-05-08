@@ -4,6 +4,8 @@ const setup = () => {
 
   const logEndpoint = (req, res, next) => {
     console.log("You have hit [DELETE] /users/logout endpoint");
+    console.log("SESSION: \n", req.session);
+
     next();
   };
 

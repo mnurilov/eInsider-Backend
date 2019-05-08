@@ -5,6 +5,8 @@ const setup = (context) => {
 
   const logEndpoint = (req, res, next) => {
     console.log("You have hit [POST] /users/login endpoint");
+    console.log("SESSION: \n", req.session);
+
     next();
   };
 
