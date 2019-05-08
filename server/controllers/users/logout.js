@@ -3,7 +3,9 @@ const _ = require('lodash');
 const setup = (context) => {  
 
   const logEndpoint = (req, res, next) => {
+    console.log("\n\n\n\n\n\n\n\n\n\n");
     console.log("You have hit [DELETE] /users/logout endpoint");
+    console.log("SESSION: \n", req.session);
 
     next();
   };
@@ -27,7 +29,7 @@ const setup = (context) => {
     .status(200)
     .send('logged out successfully');
 
-    console.log("SESSION BEFORE LOGOUT : \n", req.session);
+    console.log("SESSION AFTER LOGOUT : \n", req.session);
   };
   
   return [
