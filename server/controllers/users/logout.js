@@ -20,12 +20,16 @@ const setup = () => {
   }
 
   const sendResponse = (req, res, next) => {
+    console.log("SESSION BEFORE LOGOUT : \n", req.session);
+
     req.session = null;
     req.session.destroy();
     console.log('logged out successfully')
     res
     .status(200)
     .send('logged out successfully');
+
+    console.log("SESSION BEFORE LOGOUT : \n", req.session);
   };
   
   return [
